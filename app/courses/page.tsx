@@ -1,109 +1,92 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Link from "next/link"
-import { useEffect, useState } from "react"
-import StarryBackground from "@/components/star-background"
-import MouseTrail from "@/components/mouse-trail"
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import StarryBackground from "@/components/star-background";
+import MouseTrail from "@/components/mouse-trail";
 
+// === Course List ===
 const courses = [
   {
     id: 1,
-    title: "HTML",
-    desc: "Master the foundation of the web 🌐",
-    icon: "🧱",
-    color: "from-orange-500 to-yellow-500",
+    title: "HTML Foundations",
+    desc: "Learn the fundamental spells of web creation — the structure of every site.",
+    icon: "📜",
+    color: "from-[#b57aff] to-[#00f5ff]",
     path: "/courses/html",
   },
   {
     id: 2,
-    title: "CSS",
-    desc: "Style your imagination with colors & layouts 🎨",
-    icon: "🕸️",
-    color: "from-blue-500 to-cyan-500",
+    title: "CSS Enchantments",
+    desc: "Bring color, layout, and motion to your ideas — weave design magic.",
+    icon: "🧶",
+    color: "from-[#9b5de5] to-[#00bbf9]",
     path: "/courses/css",
   },
   {
     id: 3,
-    title: "Tailwind",
-    desc: "Speed up styling with utility-first design ⚡",
-    icon: "🦇",
-    color: "from-purple-500 to-pink-500",
-    path: "/courses/tailwind",
-  },
-  {
-    id: 4,
-    title: "JavaScript",
-    desc: "Make your sites come alive 💫",
-    icon: "👻",
-    color: "from-yellow-400 to-orange-500",
+    title: "JavaScript Charms",
+    desc: "Animate, respond, and breathe life into your web pages using logic and spells.",
+    icon: "✨",
+    color: "from-[#a855f7] to-[#06b6d4]",
     path: "/courses/javascript",
   },
   {
-    id: 5,
-    title: "React",
-    desc: "Craft dynamic UI spells with React ⚛️",
-    icon: "🧙‍♀️",
-    color: "from-indigo-500 to-purple-600",
+    id: 4,
+    title: "React Potions",
+    desc: "Brew interactive components and magical UIs with React.",
+    icon: "⚛️",
+    color: "from-[#8b5cf6] to-[#ec4899]",
     path: "/courses/react",
   },
+];
+
+// === Roadmap ===
+const roadmapSections = [
   {
-    id: 6,
-    title: "Java",
-    desc: "Master the logic and structure of programming ☕",
-    icon: "🧠",
-    color: "from-red-500 to-orange-600",
-    path: "/courses/java",
+    title: "🎯 Foundations",
+    items: ["HTML", "CSS", "JavaScript", "Git & GitHub", "Responsive Design"],
   },
-]
+  {
+    title: "🧠 Frontend Mastery",
+    items: ["React.js", "Next.js", "Tailwind CSS", "Framer Motion", "UI Design"],
+  },
+  {
+    title: "⚙️ Backend & Databases",
+    items: ["Node.js", "MongoDB", "Express", "Authentication", "Hosting"],
+  },
+  {
+    title: "🌌 Advanced & Web3",
+    items: ["TypeScript", "Solidity", "Ethers.js", "Blockchain Basics"],
+  },
+];
 
 export default function CoursesHubPage() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => setMounted(true), [])
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-b from-[#0b0018] via-[#1a0b2e] to-[#0b0018] text-white">
+    <div className="relative min-h-screen overflow-hidden bg-[#0a0016] text-white font-sans">
+      {/* === Magical Background === */}
       <StarryBackground />
       <MouseTrail />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0b0018] via-[#1a0b2e] to-[#0b0018] opacity-90" />
 
-      {/* Title */}
-      <motion.div
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="text-center pt-24 mb-16"
-      >
-        <h1
-          className="text-6xl md:text-7xl font-extrabold mb-3 tracking-wide"
-          style={{
-            background: "linear-gradient(90deg, #a855f7, #ec4899, #06b6d4)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            filter: "drop-shadow(0 0 25px rgba(168, 85, 247, 0.6))",
-          }}
-        >
-          🎃 Mystra Courses
-        </h1>
-        <p className="text-purple-300 text-lg md:text-xl">
-          Begin your journey into the magical realms of Web Development 🪄
-        </p>
-      </motion.div>
-
-      {/* Floating Ghosts and Stars (Ambient Animation) */}
+      {/* === Floating Halloween Elements === */}
       {mounted &&
         [...Array(10)].map((_, i) => (
-          <motion.div
-            key={`ghost-${i}`}
-            className="absolute text-2xl md:text-3xl opacity-70"
+          <motion.span
+            key={i}
+            className="absolute text-2xl opacity-60 select-none"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
             }}
             animate={{
               y: [0, -30, 0],
-              opacity: [0.4, 0.8, 0.4],
               rotate: [0, 10, -10, 0],
+              opacity: [0.3, 0.8, 0.3],
             }}
             transition={{
               duration: Math.random() * 8 + 5,
@@ -112,76 +95,120 @@ export default function CoursesHubPage() {
               delay: Math.random() * 3,
             }}
           >
-            👻
-          </motion.div>
+            {["🎃", "👻", "🕸️", "🕷️", "💀"][Math.floor(Math.random() * 5)]}
+          </motion.span>
         ))}
 
-      {/* Courses Grid */}
-      <div className="max-w-7xl mx-auto px-6 pb-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10">
-        {courses.map((course, index) => (
-          <Link key={course.id} href={course.path}>
-            <motion.div
-              className={`relative group rounded-3xl p-8 cursor-pointer bg-gradient-to-br ${course.color} shadow-lg shadow-purple-800/30 overflow-hidden`}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.08, y: -10 }}
-            >
-              {/* Card Glow Effect */}
+      {/* === Floating Mist Effect === */}
+      <motion.div
+        className="absolute top-0 left-0 w-full h-full pointer-events-none"
+        animate={{
+          background: [
+            "radial-gradient(circle at 10% 30%, rgba(155, 0, 255, 0.05), transparent 70%)",
+            "radial-gradient(circle at 70% 70%, rgba(0, 255, 200, 0.08), transparent 70%)",
+            "radial-gradient(circle at 30% 80%, rgba(255, 100, 255, 0.06), transparent 70%)",
+          ],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* === Page Layout === */}
+      <div className="relative z-20 flex flex-col lg:flex-row max-w-7xl mx-auto pt-20 pb-16 px-6 gap-8">
+        {/* === Left Sidebar: Learning Roadmap === */}
+        <aside className="lg:w-1/3 bg-white/[0.03] border border-white/10 rounded-2xl backdrop-blur-md p-6 shadow-[0_0_25px_rgba(155,0,255,0.1)]">
+          <h2 className="text-2xl font-bold mb-4 magic-text pulse-glow">🧭 Learning Roadmap</h2>
+
+          <div className="space-y-6">
+            {roadmapSections.map((section, i) => (
               <motion.div
-                className="absolute inset-0 bg-purple-700/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                animate={{
-                  opacity: [0.1, 0.3, 0.1],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                }}
-              />
+                key={section.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.15 }}
+                className="border-l-4 border-purple-500 pl-4"
+              >
+                <h3 className="text-lg font-semibold text-purple-300 mb-2">
+                  {section.title}
+                </h3>
+                <ul className="space-y-1.5">
+                  {section.items.map((item) => (
+                    <li
+                      key={item}
+                      className="text-sm text-purple-100/80 flex items-center gap-2 hover:text-cyan-300 transition"
+                    >
+                      <span className="w-2 h-2 bg-purple-400 rounded-full" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
 
-              <div className="relative z-10 flex flex-col items-center text-center space-y-3">
-                <div className="text-6xl">{course.icon}</div>
-                <h2 className="text-3xl font-bold tracking-tight">{course.title}</h2>
-                <p className="text-sm text-white/80 max-w-xs">{course.desc}</p>
-                <motion.div
-                  className="mt-4 px-6 py-2 bg-white/10 border border-white/20 rounded-full text-sm font-semibold tracking-wide text-purple-100 hover:bg-white/20 transition"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  Start Learning ✨
-                </motion.div>
-              </div>
+          <div className="mt-8 p-4 rounded-lg bg-gradient-to-br from-purple-700/30 to-indigo-800/30 border border-white/10 animate-pulse-slow">
+            <p className="text-sm text-purple-200 leading-relaxed">
+              🦇 “Each spell mastered adds to your power. From HTML incantations to React potions, 
+              your journey through the dark arts of webcraft begins here...”
+            </p>
+          </div>
+        </aside>
 
-              {/* Decorative Floating Sparkles */}
-              {mounted &&
-                [...Array(5)].map((_, j) => (
+        {/* === Right Content: Courses Column === */}
+        <main className="flex-1 space-y-8">
+          <motion.h1
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl font-extrabold magic-text text-center mb-10 pulse-glow"
+          >
+            Mystra 
+          </motion.h1>
+
+          {courses.map((course, i) => (
+            <Link key={course.id} href={course.path}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.15 }}
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="relative bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-xl p-6 shadow-md transition-all hover:shadow-[0_0_25px_rgba(155,0,255,0.25)] cursor-pointer flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+              >
+                <div className="relative z-10 flex items-center gap-5">
                   <motion.div
-                    key={j}
-                    className="absolute w-2 h-2 bg-white rounded-full"
-                    style={{
-                      top: `${Math.random() * 100}%`,
-                      left: `${Math.random() * 100}%`,
-                    }}
                     animate={{
-                      y: [0, -20, 0],
-                      opacity: [0.3, 0.8, 0.3],
-                      scale: [1, 1.4, 1],
+                      rotate: [0, 10, -10, 0],
                     }}
-                    transition={{
-                      duration: Math.random() * 3 + 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 3,
-                    }}
-                  />
-                ))}
-            </motion.div>
-          </Link>
-        ))}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="text-4xl sm:text-5xl"
+                  >
+                    {course.icon}
+                  </motion.div>
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-bold mb-1">
+                      {course.title}
+                    </h2>
+                    <p className="text-sm text-purple-100/80 max-w-md">
+                      {course.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="z-10 inline-block mt-2 sm:mt-0 px-4 py-2 rounded-full bg-gradient-to-r from-[#9b5de5] to-[#00f5ff] text-white text-sm font-semibold shadow-[0_0_10px_rgba(155,0,255,0.2)]"
+                >
+                  Start →
+                </motion.div>
+              </motion.div>
+            </Link>
+          ))}
+        </main>
       </div>
 
-      {/* Footer */}
-      <footer className="text-center text-purple-400 py-8 border-t border-purple-800/50 text-sm">
-        © {new Date().getFullYear()} Mystra Academy 🪄 — Crafted with Code & Magic 💜
+      {/* === Footer === */}
+      <footer className="text-center text-purple-400 py-6 border-t border-purple-800/40 text-sm relative z-20">
+        © {new Date().getFullYear()} Mystra Academy — Spells, Scrolls & Syntax 🎃
       </footer>
     </div>
-  )
+  );
 }

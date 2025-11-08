@@ -2,14 +2,16 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
+import StarryBackground from "@/components/star-background";
+import MouseTrail from "@/components/mouse-trail";
 
 // ✅ Use dynamic imports to prevent double-render flickers
-const StarryBackground = dynamic(() => import("@/components/star-background"), {
-  ssr: false,
-});
-const MouseTrail = dynamic(() => import("@/components/mouse-trail"), {
-  ssr: false,
-});
+// const StarryBackground = dynamic(() => import("@/components/star-background"), {
+//   ssr: false,
+// });
+// const MouseTrail = dynamic(() => import("@/components/mouse-trail"), {
+//   ssr: false,
+// });
 
 export default function CoursesLayout({ children }: { children: React.ReactNode }) {
   return (

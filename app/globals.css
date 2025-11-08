@@ -2,64 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* === Custom Font (Halloween-style headline) === */
+/* === Custom Font (Witchy Headline) === */
 @font-face {
-  font-family: "poppins";
-  src: url("/fonts/HalloWitchZ.ttf") format("truetype");
+  font-family: "Poppins";
+  src: url("/fonts/Poppins.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-/* === Root Theme Variables (Light Mode Defaults) === */
+/* === Root Theme Variables (Dark Neon Default) === */
 :root {
-  /* Core */
-  --background: #0b0014;
-  --foreground: #f8ecff;
+  --background: #050010;
+  --foreground: #f2e8ff;
 
-  /* Cards & UI Surfaces */
-  --card: #140024;
-  --card-foreground: #f8ecff;
+  --card: #0f001e;
+  --card-foreground: #f2e8ff;
 
-  /* Brand Colors */
-  --primary: #7a29ff;
+  --primary: #a000ff;
   --primary-foreground: #ffffff;
-  --secondary: #5b1bb2;
-  --secondary-foreground: #f4eaff;
 
-  /* Accent & Glow */
-  --accent: #9b63ff;
+  --secondary: #37006d;
+  --secondary-foreground: #e6d5ff;
+
+  --accent: #00e5ff;
   --accent-foreground: #ffffff;
 
-  /* Borders & Outlines */
-  --border: #2a0048;
-  --ring: #7a29ff;
+  --border: #2a0050;
+  --ring: #b565ff;
 
-  /* Radius for Shadcn UI consistency */
   --radius: 0.625rem;
+
+  --glow-1: #a000ff;
+  --glow-2: #ff00e1;
+  --glow-3: #00f5ff;
 }
 
-/* === Dark Theme Variables === */
+/* === Dark Theme Variables (Optional Override) === */
 .dark {
-  --background: #090012;
+  --background: #070014;
   --foreground: #faf5ff;
 
-  --card: #150024;
+  --card: #140028;
   --card-foreground: #faf5ff;
 
-  --primary: #b47bff;
+  --primary: #b56aff;
   --primary-foreground: #ffffff;
+
   --secondary: #4e0098;
   --secondary-foreground: #faf5ff;
 
-  --accent: #8338ec;
+  --accent: #00f5ff;
   --accent-foreground: #ffffff;
 
   --border: #3a0066;
   --ring: #9b63ff;
 }
 
-/* === Base Layer (applies everywhere) === */
+/* === Base Layer === */
 @layer base {
   * {
     @apply border-border outline-none;
@@ -68,20 +68,20 @@
   html,
   body {
     @apply min-h-screen antialiased transition-colors duration-300 ease-in-out;
-    background-color: var(--background);
+    background: radial-gradient(circle at top left, #090014, #04000b 80%);
     color: var(--foreground);
     font-family: "Outfit", sans-serif;
-    -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
   }
 
-  /* Fix flicker: Force consistent background during hydration */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
-    background: var(--background);
+    background: radial-gradient(circle at 20% 30%, #220045 0%, transparent 70%),
+                radial-gradient(circle at 80% 80%, #35005c 0%, transparent 70%);
+    opacity: 0.5;
   }
 
   /* === Text & Heading Hierarchy === */
@@ -93,61 +93,79 @@
   h6 {
     color: var(--foreground);
     font-family: "HalloWitchZ", "Outfit", sans-serif;
-    letter-spacing: 0.5px;
-    text-shadow: 0 0 10px rgba(154, 72, 255, 0.25);
+    letter-spacing: 1px;
+    text-shadow:
+      0 0 12px var(--glow-1),
+      0 0 25px var(--glow-2),
+      0 0 45px var(--glow-3);
   }
 
   p {
     color: var(--foreground);
-    opacity: 0.9;
+    opacity: 0.88;
   }
 
   /* === Links & Hover Effects === */
   a {
     color: var(--accent);
-    transition: all 0.3s ease-in-out;
+    text-shadow: 0 0 6px var(--accent);
+    transition: all 0.3s ease;
   }
   a:hover {
     color: var(--primary);
-    text-shadow: 0 0 8px rgba(180, 123, 255, 0.7);
+    text-shadow:
+      0 0 10px var(--primary),
+      0 0 20px var(--accent);
   }
 
-  /* === Scrollbar Styling === */
+  /* === Scrollbar === */
   ::-webkit-scrollbar {
     width: 8px;
-    height: 8px;
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #7a29ff, #b47bff);
+    background: linear-gradient(180deg, var(--primary), var(--accent));
     border-radius: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #0b0014;
+    background: #070010;
   }
 
-  /* === Smooth hover glow effect for buttons or cards === */
+  /* === Hover Glow === */
   .hover-glow {
     transition: box-shadow 0.3s ease, transform 0.2s ease;
   }
   .hover-glow:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(154, 72, 255, 0.4);
+    box-shadow: 0 0 20px rgba(160, 0, 255, 0.4);
   }
 
-  /* === Utility for magical gradient text === */
+  /* === Magical Gradient Text (no yellow/brown) === */
   .magic-text {
-    background: linear-gradient(135deg, #d8b4fe 0%, #ec4899 50%, #06b6d4 100%);
+    background: linear-gradient(135deg, #b565ff 0%, #ff00e1 50%, #00f5ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 25px rgba(180, 123, 255, 0.25);
+    text-shadow: 0 0 25px rgba(160, 0, 255, 0.4);
   }
 
-  /* === Particle-safe backdrop (prevents vanishing text) === */
+  /* === Cosmic Layer (prevents flicker) === */
   .cosmic-layer {
     position: relative;
     z-index: 10;
-    background: var(--background);
-    background-blend-mode: overlay;
+    background: transparent;
+    background-blend-mode: screen;
+  }
+
+  /* === Pulsing Witchlight Animation === */
+  .pulse-glow {
+    animation: pulseGlow 2.8s infinite ease-in-out;
+  }
+  @keyframes pulseGlow {
+    0%, 100% {
+      text-shadow: 0 0 8px var(--glow-1), 0 0 25px var(--glow-2);
+    }
+    50% {
+      text-shadow: 0 0 15px var(--glow-3), 0 0 40px var(--glow-2);
+    }
   }
 
   /* === Chat message text wrapping === */
