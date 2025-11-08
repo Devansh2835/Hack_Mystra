@@ -25,7 +25,27 @@ export default function Navigation({ scrollY, onAuthClick }: NavigationProps) {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const navItems = ["Home", "About Us", "Features"];
+  const navItems = [
+    { name: "Home", href: "#home" },
+    { name: "About Us", href: "#about" },
+    { name: "Features", href: "#features" }
+  ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const target = document.getElementById(targetId);
+    
+    if (target) {
+      const navHeight = 80; // Height of fixed navbar
+      const targetPosition = target.offsetTop - navHeight;
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <motion.nav
@@ -184,16 +204,17 @@ export default function Navigation({ scrollY, onAuthClick }: NavigationProps) {
         <div className="hidden md:flex items-center gap-10">
           {navItems.map((item, index) => (
             <motion.a
-              key={item}
-              href="#"
+              key={item.name}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
               className="relative text-gray-300 hover:text-white transition-colors group"
-              onMouseEnter={() => setActiveItem(item)}
+              onMouseEnter={() => setActiveItem(item.name)}
               onMouseLeave={() => setActiveItem("")}
               whileHover={{ y: -2 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <span className="relative z-10 font-medium tracking-wide">
-                {item}
+                {item.name}
               </span>
 
               {/* Magical underline */}
@@ -213,7 +234,7 @@ export default function Navigation({ scrollY, onAuthClick }: NavigationProps) {
               />
 
               {/* Floating sparkle on hover */}
-              {activeItem === item && (
+              {activeItem === item.name && (
                 <motion.div
                   className="absolute -top-1 -right-1 w-1.5 h-1.5 bg-purple-300 rounded-full"
                   animate={{

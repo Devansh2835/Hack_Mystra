@@ -12,17 +12,29 @@ interface Topic {
   done: boolean;
 }
 
-interface CourseSectionProps {
+// Update this interface to include onToggle
+interface SectionProps {
   title: string;
   topics: Topic[];
   color: string;
-  onToggle: (id: number) => void;
+  onToggle: (id: number) => void; // Add this line
+  progress?: number;
+  completedCount?: number;
+  totalCount?: number;
 }
 
-export default function CourseSection({ title, topics, color, onToggle }: CourseSectionProps) {
-  const completed = topics.filter((t) => t.done).length;
-  const total = topics.length;
-  const progress = Math.round((completed / total) * 100);
+export default function CourseSection({ 
+  title, 
+  topics, 
+  color, 
+  onToggle, // Make sure this is here
+  progress,
+  completedCount,
+  totalCount
+}: SectionProps) {
+  const completed = completedCount !== undefined ? completedCount : topics.filter((t) => t.done).length;
+  const total = totalCount !== undefined ? totalCount : topics.length;
+  const calculatedProgress = progress !== undefined ? progress : Math.round((completed / total) * 100);
 
   return (
     <motion.div
@@ -34,15 +46,19 @@ export default function CourseSection({ title, topics, color, onToggle }: Course
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold text-white">{title}</h2>
         <span className="text-purple-300 text-sm">
-          {completed}/{total} Topics • {progress}%
+          {completed}/{total} Topics • {calculatedProgress}%
         </span>
       </div>
 
-      <ProgressBar progress={progress} color={color} />
+      <ProgressBar progress={calculatedProgress} color={color} />
 
       <div className="mt-4 space-y-2">
         {topics.map((topic) => (
-          <TopicRow key={topic.id} topic={topic} onToggle={onToggle} />
+          <TopicRow 
+            key={topic.id} 
+            topic={topic} 
+            onToggle={onToggle} // Pass it down to TopicRow
+          />
         ))}
       </div>
     </motion.div>

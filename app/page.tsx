@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Navigation from "@/components/navigation"
 import HeroSection from "@/components/hero-section"
 import FeaturesSection from "@/components/features-section"
+import FeatureDetailsSection from "@/components/feature-details-section"
 import CourseCompletionSection from "@/components/course-completion-section"
 import Footer from "@/components/footer"
 import StarryBackground from "@/components/star-background"
@@ -49,7 +50,6 @@ export default function Home() {
       <div style={{ position: 'relative', zIndex: 10 }}>
         <Navigation scrollY={scrollY} onAuthClick={() => setShowAuthModal(true)} />
         
-        {/* Add id directly to section components */}
         <section id="home">
           <HeroSection onAuthClick={() => setShowAuthModal(true)} />
         </section>
@@ -57,6 +57,9 @@ export default function Home() {
         <section id="features">
           <FeaturesSection />
         </section>
+        
+        {/* Feature Details Section - appears after clicking feature cards */}
+        <FeatureDetailsSection />
         
         <section id="about">
           <CourseCompletionSection />
