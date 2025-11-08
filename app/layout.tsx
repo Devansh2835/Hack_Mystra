@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ChatbotButton } from "@/components/chatbot-button";
 import "./globals.css";
 
 // Connect to DB (server side only)
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           className={`${geist.variable} ${geistMono.variable} bg-[#0b0018] text-purple-100 antialiased min-h-screen`}
         >
           {children}
+          <ChatbotButton />
           <Analytics />
         </body>
       </html>

@@ -149,4 +149,13 @@
     background: var(--background);
     background-blend-mode: overlay;
   }
+
+  /* === Chat message text wrapping === */
+  .chat-message {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    white-space: pre-wrap;
+  }
 }
