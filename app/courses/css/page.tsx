@@ -42,7 +42,7 @@ export default function CSSCoursePage() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center text-5xl font-extrabold mt-12 mb-6 text-cyan-300"
       >
-        🪄 Hogwarts School of Web Enchantment
+       
       </motion.h1>
       <p className="text-center text-cyan-400 mb-12 italic">
         “If HTML is the bones, CSS is the magic that gives it life.”
