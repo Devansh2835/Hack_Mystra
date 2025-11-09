@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import StarryBackground from "@/components/star-background";
 import MouseTrail from "@/components/mouse-trail";
 
-// === Course List ===
 const courses = [
   {
     id: 1,
@@ -30,7 +29,7 @@ const courses = [
     desc: "Animate, respond, and breathe life into your web pages using logic and spells.",
     icon: "✨",
     color: "from-[#a855f7] to-[#06b6d4]",
-    path: "/courses/Javascript",
+    path: "/courses/javascript",
   },
   {
     id: 4,
@@ -42,24 +41,11 @@ const courses = [
   },
 ];
 
-// === Roadmap ===
 const roadmapSections = [
-  {
-    title: "🎯 Foundations",
-    items: ["HTML", "CSS", "JavaScript", "Git & GitHub", "Responsive Design"],
-  },
-  {
-    title: "🧠 Frontend Mastery",
-    items: ["React.js", "Next.js", "Tailwind CSS", "Framer Motion", "UI Design"],
-  },
-  {
-    title: "⚙️ Backend & Databases",
-    items: ["Node.js", "MongoDB", "Express", "Authentication", "Hosting"],
-  },
-  {
-    title: "🌌 Advanced & Web3",
-    items: ["TypeScript", "Solidity", "Ethers.js", "Blockchain Basics"],
-  },
+  { title: "🎯 Foundations", items: ["HTML", "CSS", "JavaScript", "Git & GitHub", "Responsive Design"] },
+  { title: "🧠 Frontend Mastery", items: ["React.js", "Next.js", "Tailwind CSS", "Framer Motion", "UI Design"] },
+  { title: "⚙️ Backend & Databases", items: ["Node.js", "MongoDB", "Express", "Authentication", "Hosting"] },
+  { title: "🌌 Advanced & Web3", items: ["TypeScript", "Solidity", "Ethers.js", "Blockchain Basics"] },
 ];
 
 export default function CoursesHubPage() {
@@ -68,12 +54,10 @@ export default function CoursesHubPage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#0a0016] text-white font-sans">
-      {/* === Magical Background === */}
       <StarryBackground />
       <MouseTrail />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0b0018] via-[#1a0b2e] to-[#0b0018] opacity-90" />
 
-      {/* === Floating Halloween Elements === */}
       {mounted &&
         [...Array(10)].map((_, i) => (
           <motion.span
@@ -99,25 +83,11 @@ export default function CoursesHubPage() {
           </motion.span>
         ))}
 
-      {/* === Floating Mist Effect === */}
-      <motion.div
-        className="absolute top-0 left-0 w-full h-full pointer-events-none"
-        animate={{
-          background: [
-            "radial-gradient(circle at 10% 30%, rgba(155, 0, 255, 0.05), transparent 70%)",
-            "radial-gradient(circle at 70% 70%, rgba(0, 255, 200, 0.08), transparent 70%)",
-            "radial-gradient(circle at 30% 80%, rgba(255, 100, 255, 0.06), transparent 70%)",
-          ],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* === Page Layout === */}
+      {/* === Layout === */}
       <div className="relative z-20 flex flex-col lg:flex-row max-w-7xl mx-auto pt-20 pb-16 px-6 gap-8">
-        {/* === Left Sidebar: Learning Roadmap === */}
+        {/* === Left Sidebar: Roadmap === */}
         <aside className="lg:w-1/3 bg-white/[0.03] border border-white/10 rounded-2xl backdrop-blur-md p-6 shadow-[0_0_25px_rgba(155,0,255,0.1)]">
           <h2 className="text-2xl font-bold mb-4 magic-text pulse-glow">🧭 Learning Roadmap</h2>
-
           <div className="space-y-6">
             {roadmapSections.map((section, i) => (
               <motion.div
@@ -127,15 +97,10 @@ export default function CoursesHubPage() {
                 transition={{ delay: i * 0.15 }}
                 className="border-l-4 border-purple-500 pl-4"
               >
-                <h3 className="text-lg font-semibold text-purple-300 mb-2">
-                  {section.title}
-                </h3>
+                <h3 className="text-lg font-semibold text-purple-300 mb-2">{section.title}</h3>
                 <ul className="space-y-1.5">
                   {section.items.map((item) => (
-                    <li
-                      key={item}
-                      className="text-sm text-purple-100/80 flex items-center gap-2 hover:text-cyan-300 transition"
-                    >
+                    <li key={item} className="text-sm text-purple-100/80 flex items-center gap-2 hover:text-cyan-300 transition">
                       <span className="w-2 h-2 bg-purple-400 rounded-full" />
                       {item}
                     </li>
@@ -153,7 +118,7 @@ export default function CoursesHubPage() {
           </div>
         </aside>
 
-        {/* === Right Content: Courses Column === */}
+        {/* === Right: Courses List === */}
         <main className="flex-1 space-y-8">
           <motion.h1
             initial={{ opacity: 0, y: -30 }}
@@ -161,7 +126,7 @@ export default function CoursesHubPage() {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-5xl font-extrabold magic-text text-center mb-10 pulse-glow"
           >
-            Mystra 
+            Mystra
           </motion.h1>
 
           {courses.map((course, i) => (
@@ -175,21 +140,15 @@ export default function CoursesHubPage() {
               >
                 <div className="relative z-10 flex items-center gap-5">
                   <motion.div
-                    animate={{
-                      rotate: [0, 10, -10, 0],
-                    }}
+                    animate={{ rotate: [0, 10, -10, 0] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     className="text-4xl sm:text-5xl"
                   >
                     {course.icon}
                   </motion.div>
                   <div>
-                    <h2 className="text-xl sm:text-2xl font-bold mb-1">
-                      {course.title}
-                    </h2>
-                    <p className="text-sm text-purple-100/80 max-w-md">
-                      {course.desc}
-                    </p>
+                    <h2 className="text-xl sm:text-2xl font-bold mb-1">{course.title}</h2>
+                    <p className="text-sm text-purple-100/80 max-w-md">{course.desc}</p>
                   </div>
                 </div>
 
