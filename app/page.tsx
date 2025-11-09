@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 import Navigation from "@/components/navigation"
 import HeroSection from "@/components/hero-section"
 import FeaturesSection from "@/components/features-section"
-import FeatureDetailsSection from "@/components/feature-details-section"
 import CourseCompletionSection from "@/components/course-completion-section"
 import Footer from "@/components/footer"
 import StarryBackground from "@/components/star-background"
@@ -72,9 +71,7 @@ export default function Home() {
           <FeaturesSection />
         </section>
 
-        {/* Feature Details Section */}
-        <FeatureDetailsSection />
-
+       
         <section id="about">
           <CourseCompletionSection />
         </section>
