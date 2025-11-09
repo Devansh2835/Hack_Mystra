@@ -19,7 +19,7 @@ export default function ChatbotPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! I\'m your AI assistant. How can I help you with your learning journey today?',
+      text: 'Hello! I\'m Harry Potter. Im here to help with your coding journey?',
       sender: 'bot',
       timestamp: new Date(),
     },
