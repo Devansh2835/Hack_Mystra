@@ -30,7 +30,7 @@ const courses = [
     desc: "Animate, respond, and breathe life into your web pages using logic and spells.",
     icon: "✨",
     color: "from-[#a855f7] to-[#06b6d4]",
-    path: "/courses/javascript",
+    path: "/courses/Javascript",
   },
   {
     id: 4,
