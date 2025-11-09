@@ -1,3 +1,4 @@
+// DashboardPage.tsx
 "use client";
 
 import React from "react";
@@ -15,7 +16,7 @@ export default function DashboardPage() {
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.5, ease: "easeOut" }} // safe transition
                 className="mb-8"
             >
                 <h1 className="text-3xl font-bold magic-text mb-2">Welcome back, Dipti</h1>

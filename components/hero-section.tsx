@@ -310,3 +310,12 @@ export default function HeroSection({ onAuthClick }: HeroSectionProps) {
     </section>
   )
 }
+if (typeof window !== "undefined") {
+  document.addEventListener("click", (e) => {
+    const btn = (e.target as HTMLElement | null)?.closest("button");
+    if (btn?.innerText.trim() === "Get Started") {
+      e.preventDefault();
+      window.location.href = "/courses";
+    }
+  });
+}
