@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Custom Font === */
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* === Root Theme Variables === */
+:root {
+  --background: #050010;
+  --foreground: #e6dcff;
+
+  --card: #0f001e;
+  --card-foreground: #f2e8ff;
+
+  --primary: #9b5eff;
+  --primary-foreground: #ffffff;
+
+  --secondary: #2a004d;
+  --secondary-foreground: #e6d5ff;
+
+  --accent: #7a4bff;
+  --accent-foreground: #ffffff;
+
+  --border: #2a0050;
+  --ring: #b565ff;
+
+  --radius: 0.625rem;
+
+  --glow-1: #8e5bff;
+  --glow-2: #b881ff;
+  --glow-3: #7a4bff;
+}
+
+/* === Base Layer === */
+@layer base {
+  * {
+    @apply border-border outline-none;
+  }
+
+  html,
+  body {
+    @apply min-h-screen antialiased transition-colors duration-300 ease-in-out;
+    background: radial-gradient(circle at top left, #090014, #04000b 80%);
+    color: var(--foreground);
+    font-family: "Outfit", sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(circle at 20% 30%, #1a0030 0%, transparent 70%),
+                radial-gradient(circle at 80% 80%, #2a004d 0%, transparent 70%);
+    opacity: 0.3;
+  }
+
+  /* === Headings === */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--foreground);
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 6px rgba(150, 80, 255, 0.25);
+  }
+
+  p {
+    color: var(--foreground);
+    opacity: 0.9;
+  }
+
+  /* === Links === */
+  a {
+    color: var(--accent);
+    text-shadow: none;
+    transition: all 0.3s ease;
+  }
+  a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 8px rgba(150, 80, 255, 0.3);
+  }
+
+  /* === Scrollbar === */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070010;
+  }
+
+  /* === Hover Glow === */
+  .hover-glow {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  .hover-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(155, 94, 255, 0.35);
+  }
+
+  /* === Simplified Gradient Text === */
+  .magic-text {
+    background: linear-gradient(135deg, #bda6ff 0%, #a47bff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 8px rgba(155, 94, 255, 0.25);
+  }
+
+  /* === Pulse Glow (subtle) === */
+  .pulse-glow {
+    animation: pulseGlow 3s infinite ease-in-out;
+  }
+  @keyframes pulseGlow {
+    0%, 100% {
+      text-shadow: 0 0 5px var(--glow-1);
+    }
+    50% {
+      text-shadow: 0 0 10px var(--glow-2);
+    }
+  }
+
+  /* === Chat message text wrapping === */
+  .chat-message {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    white-space: pre-wrap;
+  }
+}

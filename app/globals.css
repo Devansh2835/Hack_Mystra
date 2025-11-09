@@ -1,0 +1,286 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+<<<<<<< HEAD
+/* === Font === */
+=======
+/* === Custom Font === */
+>>>>>>> origin/master
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+<<<<<<< HEAD
+/* === Theme Variables === */
+:root {
+  --background: #060313;
+  --foreground: #f5f3ff;
+=======
+/* === Root Theme Variables === */
+:root {
+  --background: #050010;
+  --foreground: #e6dcff;
+>>>>>>> origin/master
+
+  --card: #100826;
+  --card-foreground: #ebe6ff;
+
+<<<<<<< HEAD
+  --primary: #8758ff;
+  --primary-foreground: #ffffff;
+
+  --secondary: #2a184a;
+  --secondary-foreground: #e0d5ff;
+
+  --accent: #4de4ff;
+=======
+  --primary: #9b5eff;
+  --primary-foreground: #ffffff;
+
+  --secondary: #2a004d;
+  --secondary-foreground: #e6d5ff;
+
+  --accent: #7a4bff;
+>>>>>>> origin/master
+  --accent-foreground: #ffffff;
+
+  --border: #31255a;
+  --ring: #a98bff;
+
+  --radius: 0.625rem;
+
+<<<<<<< HEAD
+  --glow-1: #8758ff;
+  --glow-2: #b278ff;
+  --glow-3: #4de4ff;
+}
+
+/* === Dark Mode Override (Optional) === */
+.dark {
+  --background: #05000b;
+  --foreground: #faf5ff;
+
+  --card: #0c0217;
+  --card-foreground: #f5edff;
+
+  --primary: #a57aff;
+  --accent: #67ebff;
+  --border: #2e2053;
+=======
+  --glow-1: #8e5bff;
+  --glow-2: #b881ff;
+  --glow-3: #7a4bff;
+>>>>>>> origin/master
+}
+
+/* === Base Layer === */
+@layer base {
+  * {
+    @apply border-border outline-none;
+  }
+
+  html,
+  body {
+    @apply min-h-screen antialiased transition-colors duration-300 ease-in-out;
+    background: radial-gradient(circle at 20% 20%, #0c011d, #03000b 85%);
+    color: var(--foreground);
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+<<<<<<< HEAD
+    background:
+      radial-gradient(circle at 25% 25%, rgba(135, 88, 255, 0.25), transparent 60%),
+      radial-gradient(circle at 75% 75%, rgba(77, 228, 255, 0.15), transparent 70%);
+    opacity: 0.4;
+  }
+
+  /* === Typography === */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--foreground);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow:
+      0 0 8px rgba(135, 88, 255, 0.25),
+      0 0 20px rgba(77, 228, 255, 0.15);
+=======
+    background: radial-gradient(circle at 20% 30%, #1a0030 0%, transparent 70%),
+                radial-gradient(circle at 80% 80%, #2a004d 0%, transparent 70%);
+    opacity: 0.3;
+  }
+
+  /* === Headings === */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--foreground);
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 6px rgba(150, 80, 255, 0.25);
+>>>>>>> origin/master
+  }
+
+  p {
+    color: var(--foreground);
+    opacity: 0.9;
+<<<<<<< HEAD
+    line-height: 1.75;
+  }
+
+  strong {
+    color: var(--primary);
+  }
+
+  /* === Links === */
+  a {
+    color: var(--accent);
+    text-shadow: 0 0 6px rgba(77, 228, 255, 0.2);
+=======
+  }
+
+  /* === Links === */
+  a {
+    color: var(--accent);
+    text-shadow: none;
+>>>>>>> origin/master
+    transition: all 0.3s ease;
+  }
+
+  a:hover {
+    color: var(--primary);
+<<<<<<< HEAD
+    text-shadow:
+      0 0 10px rgba(135, 88, 255, 0.4),
+      0 0 20px rgba(77, 228, 255, 0.3);
+  }
+
+  /* === Buttons & Hover Effects === */
+  .hover-glow {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .hover-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(135, 88, 255, 0.35);
+=======
+    text-shadow: 0 0 8px rgba(150, 80, 255, 0.3);
+>>>>>>> origin/master
+  }
+
+  /* === Scrollbar === */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #060313;
+  }
+
+<<<<<<< HEAD
+  /* === Gradient Text === */
+  .magic-text {
+    background: linear-gradient(135deg, #a784ff 0%, #4de4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow:
+      0 0 20px rgba(135, 88, 255, 0.35),
+      0 0 40px rgba(77, 228, 255, 0.2);
+  }
+
+  /* === Subtle Glow Animation === */
+  .pulse-glow {
+    animation: pulseGlow 3.2s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      text-shadow:
+        0 0 8px rgba(135, 88, 255, 0.25),
+        0 0 20px rgba(77, 228, 255, 0.15);
+    }
+    50% {
+      text-shadow:
+        0 0 14px rgba(135, 88, 255, 0.4),
+        0 0 32px rgba(77, 228, 255, 0.25);
+    }
+  }
+
+  /* === Card Glass Effect === */
+  .glass-card {
+    background: rgba(15, 5, 30, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(167, 132, 255, 0.2);
+    border-radius: var(--radius);
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(167, 132, 255, 0.25);
+  }
+
+  /* === Particle-safe backdrop === */
+  .cosmic-layer {
+    position: relative;
+    z-index: 10;
+    background: transparent;
+    backdrop-filter: blur(2px);
+=======
+  /* === Hover Glow === */
+  .hover-glow {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  .hover-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(155, 94, 255, 0.35);
+  }
+
+  /* === Simplified Gradient Text === */
+  .magic-text {
+    background: linear-gradient(135deg, #bda6ff 0%, #a47bff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 8px rgba(155, 94, 255, 0.25);
+  }
+
+  /* === Pulse Glow (subtle) === */
+  .pulse-glow {
+    animation: pulseGlow 3s infinite ease-in-out;
+  }
+  @keyframes pulseGlow {
+    0%, 100% {
+      text-shadow: 0 0 5px var(--glow-1);
+    }
+    50% {
+      text-shadow: 0 0 10px var(--glow-2);
+    }
+>>>>>>> origin/master
+  }
+
+  /* === Chat message text wrapping === */
+  .chat-message {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    white-space: pre-wrap;
+  }
+}
