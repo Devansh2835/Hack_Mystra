@@ -12,13 +12,13 @@ export default function UserProfileCard() {
             transition={{ duration: 0.6 }}
         >
             <Image
-                src="/avatar.png"
+                src="public/avatar.png"
                 alt="User Avatar"
                 width={80}
                 height={80}
                 className="rounded-full mx-auto mb-3 border border-white/20"
             />
-            <h2 className="text-lg font-semibold">Saniya</h2>
+            <h2 className="text-lg font-semibold">Dipti</h2>
             <p className="text-sm text-gray-400">Web3 Explorer</p>
             <div className="mt-4 space-x-3">
                 <button className="px-3 py-1.5 bg-purple-600/80 rounded-lg text-sm hover:bg-purple-700 transition">
