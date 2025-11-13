@@ -3,7 +3,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Navigation from "@/components/navigation"; // import navigation
+import { useUser } from "@clerk/nextjs"; // import Clerk hook
+import Navigation from "@/components/navigation";
 import StatsCard from "./components/StatsCard";
 import UserProfileCard from "./components/UserProfileCard";
 import ActivityFeed from "./components/ActivityFeed";
@@ -12,6 +13,7 @@ import ProgressOverview from "./components/ProgressOverview";
 
 export default function DashboardPage() {
     const [scrollY, setScrollY] = useState(0);
+    const { user, isSignedIn } = useUser(); // get current user
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
@@ -37,7 +39,9 @@ export default function DashboardPage() {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="mb-8"
                 >
-                    <h1 className="text-3xl font-bold magic-text mb-2">Welcome back, Dipti</h1>
+                    <h1 className="text-3xl font-bold magic-text mb-2">
+                        Welcome back, {isSignedIn ? user?.firstName || "Adventurer" : "Guest"}
+                    </h1>
                     <p className="text-purple-200/80">Continue your Web3 journey and track your progress</p>
                 </motion.div>
 
